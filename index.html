@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Стикер с высотой прокрутки страницы — Разработано в KeenGo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Istok+Web&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	font-family: 'Istok Web', sans-serif;
+	background: url(img/bg.png) center repeat;
+	min-height: 6000px;
+	position: relative;
+	width: 100%;
+}
+#text {
+	position: fixed;
+	top: 50px;
+	width: 100%;
+}
+#text_box {
+	position: relative;
+	margin-right: 125px;
+}
+h1, h2, p {
+	color: #c3c3c3;
+	max-width: 95%;
+	text-align: center;
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+h1 {
+	font-size: 24px;
+}
+h2 {
+	font-size: 18px;
+}
+#percentDiv {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	color: #c3c3c3;
+	z-index: 1000;
+	line-height: 33px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 14px;
+	display: block;
+	width: 68px;
+	padding: 0 24px 0 7px;
+	height: 33px;
+	background: url(img/tag.png) center no-repeat;
+}
+#developer {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+}
+</style>
+<script>
+window.onscroll = function() { 
+	var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+	var windowHeight = $(document).height() - $(window).height();
+	var scrollPercent =  scrolled / windowHeight;
+	document.getElementById('showScroll').innerHTML = Math.round (scrollPercent*100);
+	$("#percentDiv").css("top", ($(window).height()-$("#percentDiv").height()) * scrollPercent);
+}
+</script>
+</head>
+<body id="body">
+<div id="percentDiv"><span id="showScroll">0</span>%</div>
+<div id="text">
+	<div id="text_box">
+		<h1>Стикер с высотой прокрутки страницы</h1>
+		<h2>Высота прокрутки страницы указана в процентах, стикер располагается в зависимости от значения высоты прокрутки</h2>
+		<p>Прокрутите страницу вниз и увидите, как изменяется значение высоты прокрутки в стикере справа, а его положение постепенно опускается, в зависимости от значения процента высоты прокрутки.</p>
+		<p><img src="img/arrow.png"></p>
+	</div>
+</div>
+<a id="developer" href="http://keengo.ru" target="_blank"><img src="http://keengo.ru/export/images/logo_white.png" /></a>
+</body>
+</html>
